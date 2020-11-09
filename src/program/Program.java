@@ -3,13 +3,14 @@ package program;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
-
 import entities.Product;
 
 public class Program {
@@ -18,9 +19,10 @@ public class Program {
 		// TODO Auto-generated method stub
 
 		List <Product> product = new ArrayList<>();
-				
+		Locale.setDefault(Locale.US);		
 		Scanner scanner = new Scanner(System.in);
-		String path = "C:\\temp\\arquivo.txt";
+		System.out.println("Enter path of file");
+		String path = scanner.nextLine();
 		
 		File sourceFile = new File(path);
 		
@@ -55,9 +57,12 @@ public class Program {
 				System.out.println(targetFileStr + "\nCREATED!");
 			}
 			
-		}  catch (IOException e) {
+		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Error:" + e.getMessage());
+			System.out.println("Error: " + e.getMessage());;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error: " + e.getMessage());;
 		}
 		
 		
